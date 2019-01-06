@@ -1,19 +1,19 @@
 package com.yang4j.servletlearn.model;
 
 public class Customer {
-    private String pid;
+    private String id;
     private String name;
     private String contact;
     private String telephone;
     private String email;
     private String remark;
 
-    public String getPid() {
-        return pid;
+    public String getId() {
+        return id;
     }
 
-    public void setPid(String pid) {
-        this.pid = pid;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

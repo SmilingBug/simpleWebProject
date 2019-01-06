@@ -5,11 +5,11 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-  <servlet-name>HelloServlet</servlet-name>
-  <servlet-class>com.yang4j.servletlearn.HelloServlet</servlet-class>
+  <servlet-name>CustomerCreateServlet</servlet-name>
+  <servlet-class>com.yang4j.servletlearn.controller.CustomerCreateServlet</servlet-class>
 </servlet>
   <servlet-mapping>
-    <servlet-name>HelloServlet</servlet-name>
+    <servlet-name>CustomerCreateServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 </web-app>

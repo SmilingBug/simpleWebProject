@@ -1,5 +1,6 @@
 package com.yang4j.servletlearn.test;
 
+import com.yang4j.servletlearn.helper.DatabaseHelper;
 import com.yang4j.servletlearn.model.Customer;
 import com.yang4j.servletlearn.service.CustomerService;
 import org.junit.Assert;
@@ -9,6 +10,7 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class CustomerServiceTest {
     private final CustomerService customerService;
@@ -18,14 +20,16 @@ public class CustomerServiceTest {
     }
 
     @Before
-    public void init(){
+    public void init() {
         //初始化数据库
+        String file = "sql/customer_init.sql";
+        DatabaseHelper.executeSqlFile(file);
     }
 
     @Test
     public void getCustomerListTest() throws Exception{
         List<Customer> customerList = customerService.getCustomerList("");
-        Assert.assertEquals(3,customerList.size());
+        Assert.assertEquals(11,customerList.size());
     }
 
     @Test
@@ -59,5 +63,10 @@ public class CustomerServiceTest {
         String pid = "3";
         boolean res = customerService.deleteCustomer(pid);
         Assert.assertTrue(res);
+    }
+
+    @Test
+    public void getUUIDTest() {
+        System.out.print(UUID.randomUUID().toString().replace("-",""));
     }
 }

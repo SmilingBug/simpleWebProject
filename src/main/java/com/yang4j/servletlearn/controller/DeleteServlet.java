@@ -9,9 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/customer_create")
-public class CustomerCreateServlet extends HttpServlet {
+@WebServlet("/customer_delete")
+public class DeleteServlet extends HttpServlet {
     private CustomerService customerService;
+
     @Override
     public void init() throws ServletException {
         customerService = new CustomerService();
@@ -19,7 +20,14 @@ public class CustomerCreateServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req,resp);
+        String pid = req.getParameter("id");
+        boolean res = customerService.deleteCustomer(pid);
+        if (res) {
+            req.setAttribute("res","删除成功！");
+        }else {
+            req.setAttribute("res","删除失败！");
+        }
+        req.getRequestDispatcher("/customer").forward(req,resp);
     }
 
     @Override
